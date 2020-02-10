@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/background3">
+
+    <TextView
+        android:id="@+id/login_textView"
+        android:layout_width="216dp"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginRight="107dp"
+        android:text="@string/login"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        app:fontFamily="@font/almendra_sc"
+        />
+
+    <EditText
+        android:id="@+id/username_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_textView"
+        android:layout_alignLeft="@+id/login_textView"
+        android:layout_alignRight="@+id/login_textView"
+        android:layout_marginLeft="-4dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginRight="7dp"
+        android:drawableLeft="@drawable/username"
+        android:ems="10"
+        android:fontFamily="@font/almendra_sc"
+        android:inputType="textPersonName"
+        android:text="@string/username"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/password_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username_editText"
+        android:layout_alignStart="@+id/username_editText"
+        android:layout_alignEnd="@+id/username_editText"
+        android:layout_marginStart="-6dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="6dp"
+        android:drawableLeft="@drawable/password"
+        android:ems="10"
+        android:fontFamily="@font/almendra_sc"
+        android:inputType="textPassword"
+        android:text="string/password"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+
+    <TextView
+        android:id="@+id/forgotpassword_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password_editText"
+        android:layout_alignStart="@id/password_editText"
+        android:layout_alignEnd="@id/password_editText"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="-2dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/forgot_password"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forgotpassword_textView"
+        android:layout_alignStart="@+id/forgotpassword_textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-81dp"
+        android:layout_marginTop="42dp"
+        android:cardBackgroundColor="#00b0ff"
+        android:text="@string/login"
+        android:textSixe="25sp"/>
+
+
+</RelativeLayout>
