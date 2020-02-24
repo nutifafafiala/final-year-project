@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "576409974363",
+    "firebase_url": "https://knect-46855.firebaseio.com",
+    "project_id": "knect-46855",
+    "storage_bucket": "knect-46855.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576409974363:android:3ff9eb481b8e5bb884717e",
+        "android_client_info": {
+          "package_name": "com.benedicta.knect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576409974363-asutqbsf6dnbphpilsjlamkoa48gvb0d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8_pgj9H7gJHsk9IMSH6_53TTsQjx8Qow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "576409974363-asutqbsf6dnbphpilsjlamkoa48gvb0d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

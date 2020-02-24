@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">KNECT</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string name="signup">SIGN UP</string>
+    <string name="login">LOG IN</string>
+    <string name="register">REGISTER BUSINESS</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="email">Email</string>
+    <string name="no_account">Don\'t have an account ?</string>
+    <string name="account">Already have an account?</string>
+    <string name="name">Name</string>
+    <string name="menu_logout">Logout</string>
+    <string name="other">Other</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_profile">Profile</string>
+    <string name="add_new_business">Add New Business</string>
+    <string name="menu_about">About</string>
+
+
+</resources>
