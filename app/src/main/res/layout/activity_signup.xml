@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Sig_nupActivity">
+    android:layout_height="match_parent">
 
     <View
         android:layout_width="match_parent"
@@ -19,9 +18,9 @@
         android:text="@string/app_name"
         android:textSize="25sp"
         android:textColor="@color/white"
-        fontPath="fonts/Caveat-Regular.tff"
-        android:layout_marginTop="60dp"
-        tools:ignore="MissingPrefix" />
+        tools:ignore="MissingPrefix"
+        fontPath="fonts/Lobster-Regular.tff"
+        android:layout_marginTop="60dp" />
 
 
     <androidx.cardview.widget.CardView
@@ -29,8 +28,8 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
         android:layout_below="@id/bg_image"
-        app:cardElevation="5dp"
-        android:layout_marginTop="-35dp"
+        app:cardElevation="1dp"
+        android:layout_marginTop="-65dp"
         android:layout_marginStart="20dp"
         app:cardBackgroundColor="@color/white"
         android:layout_marginEnd="20dp">
@@ -50,6 +49,7 @@
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/signup"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"/>
 
             <!--            <TextView-->
@@ -60,6 +60,17 @@
             <!--                android:textSize="15sp"-->
             <!--                android:layout_marginBottom="10dp" />-->
 
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:padding="20dp"
+                android:id="@+id/name"
+                android:inputType="text"
+                android:drawableStart="@drawable/ic_person"
+                android:layout_marginBottom="20dp"
+                android:drawablePadding="10dp"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -90,6 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/signup"
+                android:id="@+id/sign_up"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/white"
                 android:layout_marginBottom="20dp"/>
@@ -117,6 +129,7 @@
                     android:text="@string/login"
                     android:textSize="15sp"
                     android:textAllCaps="false"
+                    android:id="@+id/login"
                     android:textColor="@color/colorAccent"/>
 
 

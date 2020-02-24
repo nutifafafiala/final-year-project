@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "450152425312",
-    "firebase_url": "https://knect-d0b5b.firebaseio.com",
-    "project_id": "knect-d0b5b",
-    "storage_bucket": "knect-d0b5b.appspot.com"
+    "project_number": "884899205203",
+    "firebase_url": "https://final-de189.firebaseio.com",
+    "project_id": "final-de189",
+    "storage_bucket": "final-de189.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:450152425312:android:46648486baaeb187cf6005",
+        "mobilesdk_app_id": "1:884899205203:android:399572fde978f6d2a3f6a6",
         "android_client_info": {
           "package_name": "com.example.knect"
         }
       },
       "oauth_client": [
         {
-          "client_id": "450152425312-nlvii9nkcg8g29mid12u0l6krq5uk6s9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.knect",
-            "certificate_hash": "9d80a044002defa74e2e224abc02a85cc1cedfbb"
-          }
-        },
-        {
-          "client_id": "450152425312-28i8hda1p5a0e5enoeloq7paf5f5pjnk.apps.googleusercontent.com",
+          "client_id": "884899205203-l2n6dua1ddp85uj75png1cqan1ij4k11.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCKwg7_JZXnSeZSBejEk95avlYrqrmlkk8"
+          "current_key": "AIzaSyDH29LrEf0AXjGIpqt1BSdIVO7H5tJ2K84"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "450152425312-28i8hda1p5a0e5enoeloq7paf5f5pjnk.apps.googleusercontent.com",
+              "client_id": "884899205203-l2n6dua1ddp85uj75png1cqan1ij4k11.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

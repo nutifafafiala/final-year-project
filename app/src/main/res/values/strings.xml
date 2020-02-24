@@ -10,6 +10,7 @@
     <string name="email">Email</string>
     <string name="no_account">Don\'t have an account ?</string>
     <string name="account">Already have an account?</string>
+    <string name="name">Name</string>
 
 
 </resources>

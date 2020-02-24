@@ -2,6 +2,7 @@ package com.example.knect;
 
 import android.app.Application;
 
+import nouri.in.goodprefslib.GoodPrefs;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class App extends Application {
@@ -14,6 +15,7 @@ public class App extends Application {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
-        //....
+
+        GoodPrefs.init(getApplicationContext());
     }
 }
