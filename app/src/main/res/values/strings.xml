@@ -29,7 +29,24 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_profile">Profile</string>
     <string name="add_new_business">Add New Business</string>
-    <string name="menu_about">About</string>
+
+    <string name="notification_settings">NOTIFICATION SETTINGS</string>
+    <string name="security">SECURITY</string>
+    <string name="change_pin">Change Pin</string>
+    <string name="to_change_pin">Click to change Pin</string>
+    <string name="change_username">Change Username</string>
+    <string name="to_change_username">Click to change Username</string>
+    <string name="about">ABOUT</string>
+    <string name="version">Version</string>
+    <string name="version1">1.0.0.0</string>
+    <string name="developer">DEVELOPER</string>
+    <string name="about_developer">Kwame NkrumahUniversity of Science and Technology student\'s final year project</string>
+    <string name="google_services">Check for Google Play Services</string>
+    <string name="google_services_sum">Check if Google play services is installed</string>
+
+
+<!--    <string name="google_services">NOTIFICATION SETTINGS</string>-->
+
 
 
 </resources>
