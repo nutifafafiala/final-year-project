@@ -81,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -97,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Toast.makeText(context, "Please input your email.", Toast.LENGTH_SHORT).show();
 
-        }else if(vPassword.isEmpty()){
+        }if(vPassword.isEmpty()){
 
             Toast.makeText(context, "Please input your password.", Toast.LENGTH_SHORT).show();
 
