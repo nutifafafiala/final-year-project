@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="google_services"
+        android:title="@string/google_services"
+        android:summary="@string/google_services_sum"
+        android:defaultValue="true"/>
+
+    <EditTextPreference
+        android:key="secure"
+        android:title="@string/security"/>
+
+    <EditTextPreference
+        android:key="pin_change"
+        android:title="@string/change_pin"
+        android:summary="@string/to_change_pin" />
+
+    <EditTextPreference
+        android:key="username_change"
+        android:title="@string/change_username"
+        android:summary="@string/to_change_username"/>
+
+    <EditTextPreference
+        android:key="about"
+        android:title="@string/about"/>
+
+    <EditTextPreference
+        android:key="version"
+        android:title="@string/version"
+        android:summary="@string/version1"/>
+
+    <EditTextPreference
+        android:key="develop"
+        android:title="@string/developer"
+        android:summary="@string/about_developer"/>
+</PreferenceScreen>

@@ -29,14 +29,10 @@
         android:label="@string/add_new_business"
         tools:layout="@layout/fragment_new_business" />
 
-    <fragment
-        android:id="@+id/nav_about"
-        android:name="com.benedicta.knect.fragments.AboutFragment"
-        android:label="@string/menu_about"
-        tools:layout="@layout/fragment_about" />
 
     <fragment
-            android:id="@+id/nav_settings"
+
+        android:id="@+id/nav_settings"
         android:name="com.benedicta.knect.fragments.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
