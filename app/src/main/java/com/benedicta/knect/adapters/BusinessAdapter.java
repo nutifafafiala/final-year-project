@@ -41,8 +41,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
     @Override
     public void onBindViewHolder(@NonNull BusinessVH holder, int position) {
         Business business = businesses.get(position);
-        holder.description.setText(business.getDescription());
-        Picasso.get().load(business.getImage()).placeholder(R.drawable.placeholder).into(holder.image);
+
     }
 
     @Override
@@ -58,8 +57,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         public BusinessVH(@NonNull View itemView) {
             super(itemView);
 
-            image = itemView.findViewById(R.id.image);
-            description = itemView.findViewById(R.id.description);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

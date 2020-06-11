@@ -21,11 +21,17 @@ import com.benedicta.knect.R;
 import com.benedicta.knect.adapters.BusinessAdapter;
 import com.benedicta.knect.listeners.ItemClickListener;
 import com.benedicta.knect.models.Business;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefreshListener{
 
     private SwipeRefreshLayout refreshLayout;
     private ProgressBar loading;
@@ -33,6 +39,7 @@ public class HomeFragment extends Fragment {
     private BusinessAdapter adapter;
     private List<Business> businesses = new ArrayList<>();
     private TextView textView;
+    private DatabaseReference reference;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,7 +53,14 @@ public class HomeFragment extends Fragment {
     }
 
     private void init(View view) {
+
+        reference = FirebaseDatabase.getInstance().getReference("business");
+
         refreshLayout = view.findViewById(R.id.refresh);
+        refreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimaryDark), getResources().getColor(R.color.colorPrimary));
+        refreshLayout.setOnRefreshListener(this);
+
+
         loading = view.findViewById(R.id.loading);
         textView = view.findViewById(R.id.info);
         recyclerView = view.findViewById(R.id.recycler_view_business);
@@ -59,7 +73,7 @@ public class HomeFragment extends Fragment {
         adapter = new BusinessAdapter(getActivity(), businesses);
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
 
 
@@ -70,5 +84,51 @@ public class HomeFragment extends Fragment {
             }
         });
 
+    }
+
+    private void loadBusiness() {
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HashMap<String, Object> item = (HashMap<String, Object>) snapshot.getValue();
+                    String cat = String.valueOf(item.get("category"));
+
+                    String category = FirebaseDatabase.getInstance().getReference("categories").child(cat).child("name").toString();
+
+                    businesses.add(0, new Business(
+                            snapshot.getKey(), String.valueOf(item.get("name")),
+                            String.valueOf(item.get("contact")), String.valueOf(item.get("location")),
+                            String.valueOf(item.get("services")), String.valueOf(item.get("delivery")), category));
+
+
+                }
+
+                refreshLayout.setRefreshing(false);
+                loading.setVisibility(View.GONE);
+
+                if (businesses.size() > 0){
+                    recyclerView.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+                }else {
+                    recyclerView.setVisibility(View.GONE);
+                    textView.setVisibility(View.VISIBLE);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                refreshLayout.setRefreshing(false);
+                loading.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.GONE);
+                textView.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    @Override
+    public void onRefresh() {
+        loadBusiness();
     }
 }

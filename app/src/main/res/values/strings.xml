@@ -48,9 +48,20 @@
     <string name="about_developer">Kwame NkrumahUniversity of Science and Technology student\'s final year project</string>
     <string name="google_services">Check for Google Play Services</string>
     <string name="google_services_sum">Check if Google play services is installed</string>
+    <string name="no_categories">No Categories Available</string>
+    <string name="contact">Contact</string>
+    <string name="location">Location</string>
+    <string name="services">Services You Provide</string>
+    <string name="delivery">Delivery</string>
+    <string name="category">Category</string>
 
 
-<!--    <string name="google_services">NOTIFICATION SETTINGS</string>-->
+    <string-array name="deliveries">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <!--    <string name="google_services">NOTIFICATION SETTINGS</string>-->
 
 
 

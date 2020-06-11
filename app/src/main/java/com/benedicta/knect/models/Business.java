@@ -1,70 +1,37 @@
 package com.benedicta.knect.models;
 
 public class Business {
-    private int id;
-    private String image;
-    private String description;
-    private String userId;
-    private String categoryId;
-    private String ratings;
 
-    public Business(int id, String image, String description, String userId, String categoryId, String ratings) {
+    public String id;
+    public String name;
+    public String contact;
+    public String location;
+    public String services;
+    public String delivery;
+    public String category;
+
+
+    public Business(String id, String name, String contact, String location, String services, String delivery, String category) {
+        this.name = name;
         this.id = id;
-        this.image = image;
-        this.description = description;
-        this.userId = userId;
-        this.categoryId = categoryId;
-        this.ratings = ratings;
+        this.contact = contact;
+        this.location = location;
+        this.services = services;
+        this.category = category;
+        this.delivery = delivery;
+    }
+
+    public Business(String name, String contact, String location, String services, String delivery, String category) {
+        this.name = name;
+        this.contact = contact;
+        this.location = location;
+        this.services = services;
+        this.delivery = delivery;
+        this.category = category;
     }
 
     public Business() {
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(String ratings) {
-        this.ratings = ratings;
-    }
 }

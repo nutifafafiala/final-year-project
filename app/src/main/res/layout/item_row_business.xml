@@ -16,26 +16,6 @@
        android:orientation="vertical">
 
 
-       <ImageView
-           android:layout_marginBottom="10dp"
-           android:layout_width="match_parent"
-           android:layout_height="150dp"
-           android:id="@+id/image"/>
-
-       <View
-           android:layout_width="match_parent"
-           android:layout_height="1dp"
-           android:background="@color/grey"/>
-
-       <TextView
-           android:layout_marginStart="10dp"
-           android:layout_marginEnd="10dp"
-           android:layout_marginBottom="15dp"
-           android:layout_marginTop="10dp"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:id="@+id/description"
-           tools:text="@string/lorem"/>
 
    </LinearLayout>
 

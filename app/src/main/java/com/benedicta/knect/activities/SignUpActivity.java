@@ -15,12 +15,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.benedicta.knect.R;
+import com.benedicta.knect.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -137,5 +140,9 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        String key = ref.child("users").push().getKey();
+        ref.child("users").child(key).setValue(new User(name, user.getEmail()));
     }
 }
