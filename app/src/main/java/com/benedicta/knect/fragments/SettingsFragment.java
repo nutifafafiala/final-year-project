@@ -6,15 +6,13 @@ import android.preference.PreferenceFragment;
 import androidx.annotation.Nullable;
 
 import com.benedicta.knect.R;
+import com.takisoft.fix.support.v7.preference.PreferenceFragmentCompat;
 
-public class SettingsFragment extends PreferenceFragment {
+public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        addPreferencesFromResource(R.xml.preferences);
-
+    public void onCreatePreferencesFix(@Nullable Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.settings, rootKey);
     }
 
 }

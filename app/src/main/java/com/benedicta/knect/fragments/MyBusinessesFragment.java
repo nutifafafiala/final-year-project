@@ -1,6 +1,5 @@
 package com.benedicta.knect.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,34 +7,30 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.benedicta.knect.R;
-import com.benedicta.knect.activities.BusinessDetailsActivity;
 import com.benedicta.knect.adapters.BusinessAdapter;
 import com.benedicta.knect.listeners.ItemClickListener;
 import com.benedicta.knect.models.Business;
-import com.benedicta.knect.models.BusinessCategory;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefreshListener{
+public class MyBusinessesFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private SwipeRefreshLayout refreshLayout;
     private ProgressBar loading;
@@ -44,21 +39,24 @@ public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
     private List<Business> businesses = new ArrayList<>();
     private TextView textView;
     private DatabaseReference reference;
+    private FirebaseUser user;
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_my_businesses, container, false);
 
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        init(view);
 
-        init(root);
+        return view;
 
-        return root;
     }
 
     private void init(View view) {
 
         reference = FirebaseDatabase.getInstance().getReference("business");
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         refreshLayout = view.findViewById(R.id.refresh);
         refreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimaryDark), getResources().getColor(R.color.colorPrimary));
@@ -84,12 +82,7 @@ public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
         adapter.setOnItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                String business = new Gson().toJson(businesses.get(position));
-
-                Intent intent = new Intent(getActivity(), BusinessDetailsActivity.class);
-                intent.putExtra("business", business);
-
-                startActivity(intent);
+                //start activity to edi business
             }
         });
 
@@ -102,14 +95,21 @@ public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    final HashMap<String, Object> item = (HashMap<String, Object>) snapshot.getValue();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HashMap<String, Object> item = (HashMap<String, Object>) snapshot.getValue();
 
-                    businesses.add(0, new Business(
-                            snapshot.getKey(), String.valueOf(item.get("name")),
-                            String.valueOf(item.get("contact")), String.valueOf(item.get("location")),
-                            String.valueOf(item.get("services")), String.valueOf(item.get("delivery")), String.valueOf(item.get("category")), String.valueOf(item.get("userId"))));
+                   if (String.valueOf(item.get("userId")).equals(user.getUid())) {
 
+
+                       businesses.add(0, new Business(
+                               snapshot.getKey(), String.valueOf(item.get("name")),
+                               String.valueOf(item.get("contact")), String.valueOf(item.get("location")),
+                               String.valueOf(item.get("services")), String.valueOf(item.get("delivery")), String.valueOf(item.get("category")), String.valueOf(item.get("userId"))));
+
+
+
+
+                   }
 
 
                 }

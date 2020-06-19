@@ -42,6 +42,10 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
     public void onBindViewHolder(@NonNull BusinessVH holder, int position) {
         Business business = businesses.get(position);
 
+        holder.name.setText(business.name);
+        holder.services.setText(business.services);
+        holder.contact.setText(business.contact);
+
     }
 
     @Override
@@ -51,13 +55,14 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
 
     class BusinessVH extends RecyclerView.ViewHolder {
 
-        private ImageView image;
-        private TextView description;
+        private TextView name, contact, services;
 
         public BusinessVH(@NonNull View itemView) {
             super(itemView);
 
-
+            name = itemView.findViewById(R.id.name);
+            contact = itemView.findViewById(R.id.contact);
+            services = itemView.findViewById(R.id.services);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

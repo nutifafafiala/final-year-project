@@ -1,29 +1,27 @@
-package com.benedicta.knect.fragments;
+package com.benedicta.knect.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.benedicta.knect.R;
-import com.benedicta.knect.activities.BusinessDetailsActivity;
 import com.benedicta.knect.adapters.BusinessAdapter;
 import com.benedicta.knect.listeners.ItemClickListener;
 import com.benedicta.knect.models.Business;
 import com.benedicta.knect.models.BusinessCategory;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefreshListener{
+public class BusinessCategoryActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
 
     private SwipeRefreshLayout refreshLayout;
     private ProgressBar loading;
@@ -44,40 +42,61 @@ public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
     private List<Business> businesses = new ArrayList<>();
     private TextView textView;
     private DatabaseReference reference;
+    private Context context = BusinessCategoryActivity.this;
+    private BusinessCategory cat;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_business_category);
+
+        if (getIntent().hasExtra("business"))
+            cat = new Gson().fromJson(getIntent().getStringExtra("business"), BusinessCategory.class);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(cat.name);
+
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        init();
 
-        init(root);
 
-        return root;
     }
 
-    private void init(View view) {
+    private void init() {
+
 
         reference = FirebaseDatabase.getInstance().getReference("business");
 
-        refreshLayout = view.findViewById(R.id.refresh);
+        refreshLayout = findViewById(R.id.refresh);
         refreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimaryDark), getResources().getColor(R.color.colorPrimary));
         refreshLayout.setOnRefreshListener(this);
 
 
-        loading = view.findViewById(R.id.loading);
-        textView = view.findViewById(R.id.info);
-        recyclerView = view.findViewById(R.id.recycler_view_business);
+        loading = findViewById(R.id.loading);
+        textView = findViewById(R.id.info);
+        recyclerView = findViewById(R.id.recycler_view_business);
 
         refreshLayout.setColorSchemeColors(
                 getResources().getColor(R.color.colorPrimary),
                 getResources().getColor(R.color.colorPrimaryDark)
         );
 
-        adapter = new BusinessAdapter(getActivity(), businesses);
+        adapter = new BusinessAdapter(context, businesses);
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
 
 
@@ -86,7 +105,7 @@ public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
             public void onItemClick(View view, int position) {
                 String business = new Gson().toJson(businesses.get(position));
 
-                Intent intent = new Intent(getActivity(), BusinessDetailsActivity.class);
+                Intent intent = new Intent(context, BusinessDetailsActivity.class);
                 intent.putExtra("business", business);
 
                 startActivity(intent);
@@ -102,15 +121,20 @@ public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    final HashMap<String, Object> item = (HashMap<String, Object>) snapshot.getValue();
-
-                    businesses.add(0, new Business(
-                            snapshot.getKey(), String.valueOf(item.get("name")),
-                            String.valueOf(item.get("contact")), String.valueOf(item.get("location")),
-                            String.valueOf(item.get("services")), String.valueOf(item.get("delivery")), String.valueOf(item.get("category")), String.valueOf(item.get("userId"))));
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HashMap<String, Object> item = (HashMap<String, Object>) snapshot.getValue();
 
 
+
+                    if (String.valueOf(item.get("category")).equals(cat.id)) {
+
+                        businesses.add(0, new Business(
+                                snapshot.getKey(), String.valueOf(item.get("name")),
+                                String.valueOf(item.get("contact")), String.valueOf(item.get("location")),
+                                String.valueOf(item.get("services")), String.valueOf(item.get("delivery")), String.valueOf(item.get("category")), String.valueOf(item.get("userId"))));
+
+
+                    }
 
                 }
 

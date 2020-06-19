@@ -7,13 +7,40 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     app:cardElevation="1dp"
-    android:layout_margin="5dp"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="3dp">
 
    <LinearLayout
+       android:padding="10dp"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:orientation="vertical">
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:text="TEst Business"
+          android:id="@+id/name"
+          android:textSize="17sp"
+          android:layout_marginBottom="5dp"
+          android:textColor="@color/black"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:text="Services"
+          android:textSize="16sp"
+          android:layout_marginBottom="5dp"
+          android:id="@+id/services"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:text="02234r24r"
+          android:textSize="16sp"
+          android:layout_marginBottom="5dp"
+          android:id="@+id/contact"/>
 
 
 

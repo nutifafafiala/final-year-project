@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import com.benedicta.knect.R;
 import com.benedicta.knect.models.Business;
 import com.benedicta.knect.models.BusinessCategory;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -123,7 +125,8 @@ public class NewBusinessFragment extends Fragment {
             Toast.makeText(getActivity(), "Invalid contact", Toast.LENGTH_SHORT).show();
         }else {
             loading.show();
-            reference.push().setValue(new Business(inputName, inputContact, inputLocation, inputServices, deliveryId, catId));
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            reference.push().setValue(new Business(inputName, inputContact, inputLocation, inputServices, deliveryId, catId, user.getUid()));
             Toast.makeText(getActivity(), "Business Added successfully", Toast.LENGTH_SHORT).show();
 
             name.setText("");

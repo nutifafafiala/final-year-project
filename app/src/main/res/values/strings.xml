@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KNECT</string>
+    <string name="app_name">Biznect</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">KNECT</string>
@@ -42,7 +42,6 @@
     <string name="change_username">Change Username</string>
     <string name="to_change_username">Click to change Username</string>
     <string name="about">ABOUT</string>
-    <string name="version">Version</string>
     <string name="version1">1.0.0.0</string>
     <string name="developer">DEVELOPER</string>
     <string name="about_developer">Kwame NkrumahUniversity of Science and Technology student\'s final year project</string>
@@ -60,6 +59,17 @@
         <item>Yes</item>
         <item>No</item>
     </string-array>
+
+    <string name="notifications">Notifications</string>
+    <string name="receive_notifications">Receive notifications</string>
+    <string name="feedback">Feedback</string>
+    <string name="send_feedback">Send us your feedback</string>
+    <string name="version">Version</string>
+    <string name="version_number">1.0</string>
+    <string name="contact_developer_uri">mailto:alexfreeman221@gmail.com</string>
+    <string name="my_business">My Businesses</string>
+    <string name="business_title">Business Details</string>
+    <string name="owner">Owner Details</string>
 
     <!--    <string name="google_services">NOTIFICATION SETTINGS</string>-->
 

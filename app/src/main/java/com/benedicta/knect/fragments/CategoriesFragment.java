@@ -1,5 +1,6 @@
 package com.benedicta.knect.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.benedicta.knect.R;
+import com.benedicta.knect.activities.BusinessCategoryActivity;
 import com.benedicta.knect.adapters.BusinessCategoryAdapter;
 import com.benedicta.knect.listeners.ItemClickListener;
 import com.benedicta.knect.models.Business;
@@ -130,5 +132,11 @@ public class CategoriesFragment extends Fragment implements  SwipeRefreshLayout.
     @Override
     public void onItemClick(View view, int position) {
         String item = new Gson().toJson(categories.get(position));
+        System.out.println("item "+item);
+
+        Intent intent = new Intent(getActivity(), BusinessCategoryActivity.class);
+        intent.putExtra("business", item);
+
+        startActivity(intent);
     }
 }
