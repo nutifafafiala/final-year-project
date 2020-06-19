@@ -2,6 +2,7 @@ package com.benedicta.knect.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
@@ -24,9 +26,10 @@ import java.util.HashMap;
 public class BusinessDetailsActivity extends AppCompatActivity {
 
     private Business business;
-    private TextView bName, category, contact, location, services, delivery, owner, email;
+    private TextView category;
+    private TextView owner;
+    private TextView email;
 
-    private DatabaseReference reference;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,16 +60,27 @@ public class BusinessDetailsActivity extends AppCompatActivity {
 
     private void init() {
 
-        reference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-        bName = findViewById(R.id.business);
+        TextView bName = findViewById(R.id.business);
         category = findViewById(R.id.category);
-        contact = findViewById(R.id.contact);
-        location = findViewById(R.id.location);
-        services = findViewById(R.id.services);
-        delivery = findViewById(R.id.delivery);
+        TextView contact = findViewById(R.id.contact);
+        TextView location = findViewById(R.id.location);
+        TextView services = findViewById(R.id.services);
+        TextView delivery = findViewById(R.id.delivery);
+        TextView facebook = findViewById(R.id.facebook);
+        TextView instagram = findViewById(R.id.instagram);
+        TextView twitter = findViewById(R.id.twitter);
+
+        ImageView image = findViewById(R.id.image);
+        Picasso.get().load(business.imageUrl).placeholder(R.drawable.placeholder).into(image);
+
         owner = findViewById(R.id.name);
         email = findViewById(R.id.email);
+
+        instagram.setText("Instagram - "+business.instagram);
+        facebook.setText("Facebook - "+business.facebook);
+        twitter.setText("Twitter - "+business.twitter);
 
         bName.setText(business.name);
         contact.setText(business.contact);

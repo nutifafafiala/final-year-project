@@ -24,13 +24,13 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.List;
 
-public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.BusinessVH> {
+public class MyBusinessAdapter extends RecyclerView.Adapter<MyBusinessAdapter.MyBusinessVH> {
 
     private Context context;
     private List<Business> businesses;
     private ItemClickListener listener;
 
-    public BusinessAdapter(Context context, List<Business> businesses) {
+    public MyBusinessAdapter(Context context, List<Business> businesses) {
         this.context = context;
         this.businesses = businesses;
     }
@@ -41,12 +41,12 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
 
     @NonNull
     @Override
-    public BusinessVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new BusinessVH(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_business, parent, false));
+    public MyBusinessVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MyBusinessVH(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_business, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final BusinessVH holder, int position) {
+    public void onBindViewHolder(@NonNull final MyBusinessVH holder, int position) {
         final Business business = businesses.get(position);
 
         holder.name.setText(business.name);
@@ -80,24 +80,30 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         return businesses.size();
     }
 
-    class BusinessVH extends RecyclerView.ViewHolder {
+    class MyBusinessVH extends RecyclerView.ViewHolder {
 
         private TextView name, contact, services;
         private ImageView image, more;
 
-        public BusinessVH(@NonNull View itemView) {
+        public MyBusinessVH(@NonNull View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
             contact = itemView.findViewById(R.id.contact);
             services = itemView.findViewById(R.id.services);
             image = itemView.findViewById(R.id.image);
-
             more = itemView.findViewById(R.id.more);
 
-            more.setVisibility(View.GONE);
+            more.setVisibility(View.VISIBLE);
 
             itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(view, getAdapterPosition());
+                }
+            });
+
+            more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     listener.onItemClick(view, getAdapterPosition());

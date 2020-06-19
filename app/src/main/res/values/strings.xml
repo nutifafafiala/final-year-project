@@ -70,6 +70,15 @@
     <string name="my_business">My Businesses</string>
     <string name="business_title">Business Details</string>
     <string name="owner">Owner Details</string>
+    <string name="update">Update</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="instagram">Instagram</string>
+    <string name="optional">optional</string>
+    <string name="choose_image">Choose Image</string>
+    <string name="social_handles">Social Media Handles</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 
     <!--    <string name="google_services">NOTIFICATION SETTINGS</string>-->
 

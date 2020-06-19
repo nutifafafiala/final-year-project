@@ -98,18 +98,19 @@ public class HomeFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
     }
 
     private void loadBusiness() {
-        businesses.clear();
+//        businesses.clear();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                businesses.clear();
                 for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     final HashMap<String, Object> item = (HashMap<String, Object>) snapshot.getValue();
 
                     businesses.add(0, new Business(
-                            snapshot.getKey(), String.valueOf(item.get("name")),
-                            String.valueOf(item.get("contact")), String.valueOf(item.get("location")),
-                            String.valueOf(item.get("services")), String.valueOf(item.get("delivery")), String.valueOf(item.get("category")), String.valueOf(item.get("userId"))));
-
+                            snapshot.getKey(), String.valueOf(item.get("name")), String.valueOf(item.get("contact")),
+                            String.valueOf(item.get("location")), String.valueOf(item.get("services")), String.valueOf(item.get("delivery")),
+                            String.valueOf(item.get("category")), String.valueOf(item.get("userId")), String.valueOf(item.get("imageUrl")),
+                            String.valueOf(item.get("facebook")), String.valueOf(item.get("instagram")), String.valueOf(item.get("twitter"))));
 
 
                 }

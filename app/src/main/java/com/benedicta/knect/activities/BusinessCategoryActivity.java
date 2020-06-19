@@ -117,10 +117,10 @@ public class BusinessCategoryActivity extends AppCompatActivity implements Swipe
     }
 
     private void loadBusiness() {
-        businesses.clear();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                businesses.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     HashMap<String, Object> item = (HashMap<String, Object>) snapshot.getValue();
 
@@ -129,10 +129,10 @@ public class BusinessCategoryActivity extends AppCompatActivity implements Swipe
                     if (String.valueOf(item.get("category")).equals(cat.id)) {
 
                         businesses.add(0, new Business(
-                                snapshot.getKey(), String.valueOf(item.get("name")),
-                                String.valueOf(item.get("contact")), String.valueOf(item.get("location")),
-                                String.valueOf(item.get("services")), String.valueOf(item.get("delivery")), String.valueOf(item.get("category")), String.valueOf(item.get("userId"))));
-
+                                snapshot.getKey(), String.valueOf(item.get("name")), String.valueOf(item.get("contact")),
+                                String.valueOf(item.get("location")), String.valueOf(item.get("services")), String.valueOf(item.get("delivery")),
+                                String.valueOf(item.get("category")), String.valueOf(item.get("userId")), String.valueOf(item.get("imageUrl")),
+                                String.valueOf(item.get("facebook")), String.valueOf(item.get("instagram")), String.valueOf(item.get("twitter"))));
 
                     }
 

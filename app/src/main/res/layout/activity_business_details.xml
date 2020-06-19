@@ -44,6 +44,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
 
+
                   <TextView
                       android:textSize="16sp"
                       android:layout_width="match_parent"
@@ -52,8 +53,18 @@
                       android:id="@+id/title"
                       android:text="@string/business_title"/>
 
-                  <LinearLayout
+                  <ImageView
+                      android:layout_marginTop="10dp"
+                      android:layout_marginBottom="10dp"
                       android:layout_below="@id/title"
+                      android:layout_width="match_parent"
+                      android:layout_height="170dp"
+                      android:src="@drawable/placeholder"
+                      android:scaleType="centerCrop"
+                      android:id="@+id/image"/>
+
+                  <LinearLayout
+                      android:layout_below="@id/image"
                       android:layout_marginBottom="10dp"
                       android:id="@+id/row_one"
                       android:padding="10dp"
@@ -213,6 +224,70 @@
                           android:id="@+id/delivery"
                           tools:text="Test Delivery"
                           android:layout_weight="1"/>
+
+                  </LinearLayout>
+
+                  <LinearLayout
+                      android:layout_marginBottom="10dp"
+                      android:layout_below="@id/row_six"
+                      android:padding="10dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+                      <ImageView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="8"
+                          android:src="@drawable/ic_forum"/>
+
+                      <LinearLayout
+                          android:layout_marginStart="10dp"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_weight="1">
+
+                          <TextView
+                              android:textSize="15sp"
+                              android:layout_marginBottom="10dp"
+                              android:layout_gravity="center_vertical"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="@string/social_handles"
+                             />
+
+                          <TextView
+                              android:layout_marginBottom="10dp"
+                              android:id="@+id/facebook"
+                              android:textSize="15sp"
+                              android:layout_gravity="center_vertical"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              tools:text="@string/social_handles"
+                              />
+
+                          <TextView
+                              android:layout_marginBottom="10dp"
+                              android:id="@+id/instagram"
+                              android:textSize="15sp"
+                              android:layout_gravity="center_vertical"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              tools:text="@string/social_handles"
+                              />
+
+                          <TextView
+                              android:id="@+id/twitter"
+                              android:textSize="15sp"
+                              android:layout_gravity="center_vertical"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              tools:text="@string/social_handles"
+                              />
+
+
+                      </LinearLayout>
 
                   </LinearLayout>
 
